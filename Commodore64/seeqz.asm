@@ -15,8 +15,7 @@
 *=$2000 "Cursor Sprite"
 #import "seeqz-sprite-cursor.asm"
 
-.disk [filename="seeqz.d64", name="THE DISK", id="2021!" ] 
-{
+.disk [filename="seeqz.d64", name="THE DISK", id="2021!" ] {
         [name="----------------", type="rel"                            ],
         [name="seeqz", type="prg",  segments="StartUp,Default,Code,SEEQZ_DRIVER,SEEQZ_DRIVER_DEFAULT" ],
         [name="----------------", type="rel"                            ],
