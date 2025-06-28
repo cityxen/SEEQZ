@@ -1,4 +1,4 @@
-# SEEQZ
+# SEEQZ 
 
 Retro Computer Sequencer Software for Relays, LEDs, etc
 
