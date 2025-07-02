@@ -17,8 +17,10 @@
 
 .disk [filename="seeqz.d64", name="THE DISK", id="2021!" ] {
         [name="----------------", type="rel"                            ],
-        [name="seeqz", type="prg",  segments="StartUp,Default,Code,SEEQZ_DRIVER,SEEQZ_DRIVER_DEFAULT" ],
+        [name="SEEQZ", type="prg",  segments="StartUp,Default,Code,SEEQZ_DRIVER,SEEQZ_DRIVER_DEFAULT" ],
         [name="----------------", type="rel"                            ],
+		[name="DRV.TEST1", type="prg"                            ],
+		[name="DRV.TEST2", type="prg"                            ],
 }
 
 
@@ -27,20 +29,31 @@ CityXenUpstart(start)
 
 #import "sys.il.asm"
 #import "timers.il.asm"
+#import "print.il.asm"
+#import "input.il.asm"
 #import "print/u_calculate_color_pos.asm"
 #import "print/u_calculate_screen_pos.asm"
 #import "seeqz-vars.asm"
 #import "seeqz-drawtracks.asm"
 #import "seeqz-screen.asm"
+#import "seeqz-util.asm"
 
 #import "seeqz-drivers.asm"
 .segment Code[]
 
-*=$c000 "Program"
+*=$4000 "Program"
 
 .const SRSQ=SCREEN_RAM+324
 
 start:
+
+	ClearScreen(BLACK)
+	Print(seeqz_driver_msg_1)
+	jsr seeqz_driver_list_read_dir
+	InputText2(filename,15,1,9,5)
+
+	rts
+
     lda VIC_MEM_POINTERS // point to the new characters
     ora #$0c
     sta VIC_MEM_POINTERS
@@ -52,7 +65,9 @@ start:
     sta BACKGROUND_COLOR
 	DrawPetMateScreen(screen)
 	jsr refresh_pattern
+	
 
+main_loop:
 loop1:
 
 	lda irq_timer1_tr

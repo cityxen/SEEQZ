@@ -7,7 +7,7 @@
 .const SEEQZ_CIEC_PORT = 3
 .const SEEQZ_MEATLOAF  = 4
 .segment SEEQZ_DRIVER_DEFAULT[]
-*=$cd00 "SEEQZ DRIVER";
+*=$4100 "SEEQZ DRIVER";
 seeqz_drvr_name: // 16 byte zero terminated string
 .text "driverdefault-001" // driver default will be the 8 channel relay board
      //01234567890123456
@@ -22,7 +22,7 @@ seeqz_drvr_draw_bits_routine: // 256 bytes reserved for specialized driver outpu
 .fill 256,0
 .byte 0
 .segment SEEQZ_DRIVER[]
-*=$cf00 "SEEQZ DRIVER";
+*=$4300 "SEEQZ DRIVER";
 seeqz_set_bit:
     rts
 .file [name="driverdefault-001.prg", segments="SEEQZ_DRIVER_DEFAULT"]

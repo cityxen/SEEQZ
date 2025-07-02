@@ -3,6 +3,14 @@
 seeqz_driver:
 .byte 0
 
+drive_number:
+.byte 8
+
+seeqz_driver_msg_1:
+.byte KEY_GREEN
+.text "WHICH DRIVER?"
+.byte 13
+.byte 0
 
 // zero page vars
 .const zp_block1             = $03
