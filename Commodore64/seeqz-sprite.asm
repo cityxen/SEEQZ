@@ -2,7 +2,6 @@
 
 seeqz_sprite_init:
 
-    // lda # (seeqz_sprite_cursor/64)
     lda #224
     sta SPRITE_0_POINTER
 
@@ -15,6 +14,5 @@ seeqz_sprite_init:
     lda #$a0
     sta SPRITE_0_X
     sta SPRITE_0_Y
-
 
     rts

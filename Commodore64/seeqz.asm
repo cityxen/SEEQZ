@@ -60,8 +60,5 @@ start:
 	jsr refresh_pattern
 
 main_loop:
-
 #import "seeqz-keys.asm"
-
     jmp main_loop
-
